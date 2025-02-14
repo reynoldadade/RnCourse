@@ -31,33 +31,34 @@ export default function App() {
         })
     }
     return (
-        <View style={styles.appContainer}>
-            <Button
-                title="Add New Goal"
-                color="#5e08cc"
-                onPress={startAddGoalHandler}
-            />
-
-            <GoalInput
-                onAddGoal={addGoalHandler}
-                visible={modalIsVisible}
-                onEndGoal={endAddGoalHandler}
-            />
-            <View style={styles.goalsContainer}>
-                <FlatList
-                    data={courseGoals}
-                    keyExtractor={(item, index) => item.id + index}
-                    renderItem={(itemData) => (
-                        <GoalItem
-                            itemData={itemData}
-                            onDeleteItem={deleteGoalHandler}
-                        />
-                    )}
+        <>
+            <StatusBar style="light" />
+            <View style={styles.appContainer}>
+                <Button
+                    title="Add New Goal"
+                    color="#a065ec"
+                    onPress={startAddGoalHandler}
                 />
-            </View>
 
-            <StatusBar style="auto" />
-        </View>
+                <GoalInput
+                    onAddGoal={addGoalHandler}
+                    visible={modalIsVisible}
+                    onEndGoal={endAddGoalHandler}
+                />
+                <View style={styles.goalsContainer}>
+                    <FlatList
+                        data={courseGoals}
+                        keyExtractor={(item, index) => item.id + index}
+                        renderItem={(itemData) => (
+                            <GoalItem
+                                itemData={itemData}
+                                onDeleteItem={deleteGoalHandler}
+                            />
+                        )}
+                    />
+                </View>
+            </View>
+        </>
     )
 }
 
@@ -67,6 +68,8 @@ export const styles = StyleSheet.create({
         paddingTop: 50,
         paddingHorizontal: 16,
         flex: 1,
+        rowGap: 16,
+        backgroundColor: '#1e085a',
     },
 
     goalsContainer: {
